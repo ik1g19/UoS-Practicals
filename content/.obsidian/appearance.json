@@ -3,5 +3,6 @@
   "cssTheme": "Things",
   "enabledCssSnippets": [
     "centre_images"
-  ]
+  ],
+  "theme": "moonstone"
 }

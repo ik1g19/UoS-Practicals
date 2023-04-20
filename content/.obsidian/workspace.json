@@ -8,19 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "c187f8beb171ebd9",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "notes/Distributed Systems and Networks/Distributed Systems and Networks.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "9d1e151fcb7a8d2b",
+            "id": "494d0c16a277d8f6",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -160,44 +147,44 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "9d1e151fcb7a8d2b",
+  "active": "494d0c16a277d8f6",
   "lastOpenFiles": [
+    "notes/Year 1/Computer Systems.md",
+    "_index.md",
+    "notes/Year 4/Intelligent Agents.md",
+    "notes/Year 3/Group Design Project.md",
+    "notes/Year 4",
+    "notes/Year 3/Computer Vision.md",
+    "notes/Year 2/Distributed Systems and Networks.md",
+    "notes/Year 1/Programming I.md",
+    "notes/Year 2/Programming Language Concepts.md",
+    "notes/Year 2/Programming III.md",
+    "notes/Year 2/Software Engineering Group Project.md",
+    "notes/Year 1/Programming II.md",
+    "notes/Year 3",
+    "notes/Software Engineering Group Project",
+    "notes/Year 1/Data Management.md",
+    "notes/Year 2",
+    "notes/templates/post.md",
+    "notes/templates",
+    "notes/Year 1",
     "notes/Data Management/Data Management.md",
     "notes/Distributed Systems and Networks/Distributed Systems and Networks.md",
     "notes/Data Management",
     "notes/Software Security/Week 4/Arbitrary Code Execution and Mitigation.md",
     "notes/Distributed Systems and Networks",
     "notes/Software Security/Labs/Assembly.md",
-    "_index.md",
     "notes/Programming 2/Programming 2.md",
     "notes/Interaction Design/Interaction Design.md",
     "notes/Programming 2",
     "notes/Software Security/Courseworks/Coursework 1.md",
     "notes/SEG/SEG.md",
     "notes/Interaction Design",
-    "notes/SEG",
     "notes/Software Security/Software Security ToC.md",
-    "notes/Software Security/Courseworks",
     "notes/Principles of Cyber Security/Principles of Cyber Security.md",
     "notes/Engineering Management and Law/Engineering Management and Law.md",
     "notes/Programming 3/Programming 3.md",
-    "notes/Principles of Cyber Security",
     "notes/Web and Cloud Based Security/Web and Cloud Based Security.md",
-    "notes/Programming 3",
-    "notes/Advanced Databases/Week 4.md",
-    "notes/Advanced Databases/Week 9.md",
-    "notes/Advanced Databases/Week 8.md",
-    "notes/Advanced Databases/Week 7.md",
-    "notes/Advanced Databases/Week 6.md",
-    "notes/Advanced Databases/Week 5.md",
-    "notes/Advanced Databases/Week 3.md",
-    "notes/Advanced Databases/Week 2.md",
-    "notes/Advanced Databases/Week 1.md",
-    "notes/Foundations of Comp Sci/Foundations of Comp Sci.md",
-    "notes/Theory of Computing/Theory of Computing.md",
-    "notes/Theory of Computing",
-    "notes/Advanced Computer Networks/Week 9/Network Security.md",
-    "notes/Foundations of Comp Sci",
     "notes/Software Security/Images/Pasted image 20230413011753.png",
     "notes/Software Security/Images/Pasted image 20230413012204.png",
     "notes/Software Security/Images/Pasted image 20230412220117.png",
