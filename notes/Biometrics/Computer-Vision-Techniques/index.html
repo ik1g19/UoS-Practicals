@@ -1,0 +1,187 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="Background Subtraction What the fuck was he talking about in the background subtraction part
+Wavelets Wavelets are used for:
+ Scale-Space analysis Simultaneous decimation in space and frequency  2D Gabor Filter $$g w 2 D(x, y)=\frac{1}{\sqrt{\pi \sigma^2}} e^{-\left(\frac{\left(x-x_0\right)^2+\left(y-y_0\right)^2}{2 \sigma^2}\right)} e^{-i 2 \pi \pi_0\left(\left(x-x_0\right) \cos \theta+\left(y-y_0\right) \sin \theta\right)}$$ $$\begin{array}{ll} -x_0, y_0 \text { - central position } & -\theta \text { - orientatio } \mathrm{n} \text { of the wavelet } \ -f_0 \text { - central frequency } & -\sigma \text { - width of the wavelet } \end{array}$$"><meta property="og:title" content="Computer Vision Techniques"><meta property="og:description" content="Background Subtraction What the fuck was he talking about in the background subtraction part
+Wavelets Wavelets are used for:
+ Scale-Space analysis Simultaneous decimation in space and frequency  2D Gabor Filter $$g w 2 D(x, y)=\frac{1}{\sqrt{\pi \sigma^2}} e^{-\left(\frac{\left(x-x_0\right)^2+\left(y-y_0\right)^2}{2 \sigma^2}\right)} e^{-i 2 \pi \pi_0\left(\left(x-x_0\right) \cos \theta+\left(y-y_0\right) \sin \theta\right)}$$ $$\begin{array}{ll} -x_0, y_0 \text { - central position } & -\theta \text { - orientatio } \mathrm{n} \text { of the wavelet } \ -f_0 \text { - central frequency } & -\sigma \text { - width of the wavelet } \end{array}$$"><meta property="og:type" content="website"><meta property="og:image" content="https://ik1g19.github.io/UoS-Notes/icon.png"><meta property="og:url" content="https://ik1g19.github.io/UoS-Notes/notes/Biometrics/Computer-Vision-Techniques/"><meta property="og:width" content="200"><meta property="og:height" content="200"><meta name=twitter:card content="summary"><meta name=twitter:title content="Computer Vision Techniques"><meta name=twitter:description content="Background Subtraction What the fuck was he talking about in the background subtraction part
+Wavelets Wavelets are used for:
+ Scale-Space analysis Simultaneous decimation in space and frequency  2D Gabor Filter $$g w 2 D(x, y)=\frac{1}{\sqrt{\pi \sigma^2}} e^{-\left(\frac{\left(x-x_0\right)^2+\left(y-y_0\right)^2}{2 \sigma^2}\right)} e^{-i 2 \pi \pi_0\left(\left(x-x_0\right) \cos \theta+\left(y-y_0\right) \sin \theta\right)}$$ $$\begin{array}{ll} -x_0, y_0 \text { - central position } & -\theta \text { - orientatio } \mathrm{n} \text { of the wavelet } \ -f_0 \text { - central frequency } & -\sigma \text { - width of the wavelet } \end{array}$$"><meta name=twitter:image content="https://ik1g19.github.io/UoS-Notes/icon.png"><meta name=twitter:site content="_jzhao"><title>Computer Vision Techniques</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" type=image/png href=https://ik1g19.github.io/UoS-Notes//icon.png><link href=https://ik1g19.github.io/UoS-Notes/styles.80333fa2099c0bee674efa435fde378c.min.css rel=stylesheet><link href=https://ik1g19.github.io/UoS-Notes/styles/_light_syntax.86a48a52faebeaaf42158b72922b1c90.min.css rel=stylesheet id=theme-link><script src=https://ik1g19.github.io/UoS-Notes/js/darkmode.fdbb50a651b073e7d85910aebde4469d.min.js></script>
+<script src=https://ik1g19.github.io/UoS-Notes/js/util.00639692264b21bc3ee219733d38a8be.min.js></script>
+<link rel=preload href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css as=style onload='this.onload=null,this.rel="stylesheet"' integrity=sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity=sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity=sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/copy-tex.min.js integrity=sha384-ww/583aHhxWkz5DEVn6OKtNiIaLi2iBRNZXfJRiY1Ai7tnJ9UXpEsyvOITVpTl4A crossorigin=anonymous></script>
+<script src=https://cdn.jsdelivr.net/npm/@floating-ui/core@1.2.1></script>
+<script src=https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.2.1></script>
+<script async src=https://ik1g19.github.io/UoS-Notes/js/popover.aa9bc99c7c38d3ae9538f218f1416adb.min.js></script>
+<script defer src=https://ik1g19.github.io/UoS-Notes/js/code-title.ce4a43f09239a9efb48fee342e8ef2df.min.js></script>
+<script defer src=https://ik1g19.github.io/UoS-Notes/js/clipboard.2913da76d3cb21c5deaa4bae7da38c9f.min.js></script>
+<script defer src=https://ik1g19.github.io/UoS-Notes/js/callouts.7723cac461d613d118ee8bb8216b9838.min.js></script>
+<script>const SEARCH_ENABLED=!1,LATEX_ENABLED=!0,PRODUCTION=!0,BASE_URL="https://ik1g19.github.io/UoS-Notes/",fetchData=Promise.all([fetch("https://ik1g19.github.io/UoS-Notes/indices/linkIndex.4cd7744b37da745103d2e306cd2cd001.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://ik1g19.github.io/UoS-Notes/indices/contentIndex.a1e306a3e6a8cedcc8275a04564ca752.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n})),render=()=>{const e=new URL(BASE_URL),t=e.pathname,n=window.location.pathname,s=t==n;addCopyButtons(),addTitleToCodeBlocks(),addCollapsibleCallouts(),initPopover("https://ik1g19.github.io/UoS-Notes",!0);const o=document.getElementById("footer");if(o){const e=document.getElementById("graph-container");if(!e)return requestAnimationFrame(render);e.textContent="";const t=s&&!1;drawGraph("https://ik1g19.github.io/UoS-Notes",t,[{"/moc":"#4388cc"}],t?{centerForce:1,depth:-1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.5,linkDistance:1,opacityScale:3,repelForce:1,scale:1.4}:{centerForce:1,depth:1,enableDrag:!0,enableLegend:!1,enableZoom:!0,fontSize:.6,linkDistance:1,opacityScale:3,repelForce:2,scale:1.2})}var i=document.getElementsByClassName("mermaid");i.length>0&&import("https://unpkg.com/mermaid@9/dist/mermaid.esm.min.mjs").then(e=>{e.default.init()});function a(n){const e=n.target,t=e.className.split(" "),s=t.includes("broken"),o=t.includes("internal-link");plausible("Link Click",{props:{href:e.href,broken:s,internal:o,graph:!1}})}const r=document.querySelectorAll("a");for(link of r)link.className.includes("root-title")&&link.addEventListener("click",a,{once:!0})},init=(e=document)=>{addCopyButtons(),addTitleToCodeBlocks(),renderMathInElement(e.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],macros:{'’':"'"},throwOnError:!1})}</script><script type=module>
+    import { attachSPARouting } from "https:\/\/ik1g19.github.io\/UoS-Notes\/js\/router.d6fe6bd821db9ea97f9aeefae814d8e7.min.js"
+    attachSPARouting(init, render)
+  </script><script defer data-domain=ik1g19.github.io/UoS-Notes src=https://plausible.io/js/script.js></script>
+<script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script></head><body><div id=search-container><div id=search-space><input autocomplete=off id=search-bar name=search type=text aria-label=Search placeholder="Search for something..."><div id=results-container></div></div></div><script src=https://cdn.jsdelivr.net/npm/flexsearch@0.7.21/dist/flexsearch.bundle.js integrity="sha256-i3A0NZGkhsKjVMzFxv3ksk0DZh3aXqu0l49Bbh0MdjE=" crossorigin=anonymous defer></script>
+<script defer src=https://ik1g19.github.io/UoS-Notes/js/full-text-search.e6e2e0c213187ca0c703d6e2c7a77fcd.min.js></script><div class=singlePage><header><h1 id=page-title><a class=root-title href=https://ik1g19.github.io/UoS-Notes/>My UoS Notes</a></h1><div class=spacer></div><div id=search-icon><p>Search</p><svg tabindex="0" aria-labelledby="title desc" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title id="title">Search Icon</title><desc id="desc">Icon to open search</desc><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"/><circle cx="8" cy="8" r="7"/></g></svg></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
+<label id=toggle-label-light for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="dayIcon" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35"><title>Light Mode</title><path d="M6 17.5C6 16.672 5.328 16 4.5 16h-3C.672 16 0 16.672.0 17.5S.672 19 1.5 19h3C5.328 19 6 18.328 6 17.5zM7.5 26c-.414.0-.789.168-1.061.439l-2 2C4.168 28.711 4 29.086 4 29.5 4 30.328 4.671 31 5.5 31c.414.0.789-.168 1.06-.44l2-2C8.832 28.289 9 27.914 9 27.5 9 26.672 8.329 26 7.5 26zm10-20C18.329 6 19 5.328 19 4.5v-3C19 .672 18.329.0 17.5.0S16 .672 16 1.5v3C16 5.328 16.671 6 17.5 6zm10 3c.414.0.789-.168 1.06-.439l2-2C30.832 6.289 31 5.914 31 5.5 31 4.672 30.329 4 29.5 4c-.414.0-.789.168-1.061.44l-2 2C26.168 6.711 26 7.086 26 7.5 26 8.328 26.671 9 27.5 9zM6.439 8.561C6.711 8.832 7.086 9 7.5 9 8.328 9 9 8.328 9 7.5c0-.414-.168-.789-.439-1.061l-2-2C6.289 4.168 5.914 4 5.5 4 4.672 4 4 4.672 4 5.5c0 .414.168.789.439 1.06l2 2.001zM33.5 16h-3c-.828.0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5h3c.828.0 1.5-.672 1.5-1.5S34.328 16 33.5 16zM28.561 26.439C28.289 26.168 27.914 26 27.5 26c-.828.0-1.5.672-1.5 1.5.0.414.168.789.439 1.06l2 2C28.711 30.832 29.086 31 29.5 31c.828.0 1.5-.672 1.5-1.5.0-.414-.168-.789-.439-1.061l-2-2zM17.5 29c-.829.0-1.5.672-1.5 1.5v3c0 .828.671 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3C19 29.672 18.329 29 17.5 29zm0-22C11.71 7 7 11.71 7 17.5S11.71 28 17.5 28 28 23.29 28 17.5 23.29 7 17.5 7zm0 18c-4.136.0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5 7.5 3.364 7.5 7.5S21.636 25 17.5 25z"/></svg></label><label id=toggle-label-dark for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nightIcon" viewBox="0 0 100 100" style="enable-background='new 0 0 100 100'"><title>Dark Mode</title><path d="M96.76 66.458c-.853-.852-2.15-1.064-3.23-.534-6.063 2.991-12.858 4.571-19.655 4.571C62.022 70.495 50.88 65.88 42.5 57.5 29.043 44.043 25.658 23.536 34.076 6.47c.532-1.08.318-2.379-.534-3.23-.851-.852-2.15-1.064-3.23-.534-4.918 2.427-9.375 5.619-13.246 9.491-9.447 9.447-14.65 22.008-14.65 35.369.0 13.36 5.203 25.921 14.65 35.368s22.008 14.65 35.368 14.65c13.361.0 25.921-5.203 35.369-14.65 3.872-3.871 7.064-8.328 9.491-13.246C97.826 68.608 97.611 67.309 96.76 66.458z"/></svg></label></div></header><article><h1>Computer Vision Techniques</h1><p class=meta>Last updated
+Apr 11, 2023
+<a href=https://github.com/ik1g19/notes/Biometrics/Computer%20Vision%20Techniques.md rel=noopener>Edit Source</a></p><ul class=tags></ul><aside class=mainTOC><details><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#2d-gabor-filter>2D Gabor Filter</a><ol><li></li></ol></li></ol><ol><li><a href=#image-histogram>Image Histogram</a></li><li><a href=#image-scaling>Image Scaling</a></li><li><a href=#histogram-stretching>Histogram Stretching</a></li></ol><ol><li><a href=#prewitt-masks>Prewitt Masks</a></li><li><a href=#sobel-masks>Sobel Masks</a></li><li><a href=#laplacian-of-gaussian-log>Laplacian of Gaussian (LoG)</a></li></ol><ol><li><a href=#desirable-properties>Desirable Properties</a><ol><li><a href=#invariance>Invariance</a></li></ol></li><li><a href=#region-description>Region Description</a><ol><li><a href=#area>Area</a></li><li><a href=#perimeter>Perimeter</a></li><li><a href=#compactness>Compactness</a></li><li><a href=#dispersion>Dispersion</a></li><li><a href=#moments>Moments</a></li></ol></li><li><a href=#shape-description>Shape Description</a><ol><li><a href=#fourier-descriptors>Fourier Descriptors</a></li></ol></li></ol></nav></details></aside><a href=#background-subtraction><h1 id=background-subtraction><span class=hanchor arialabel=Anchor># </span>Background Subtraction</h1></a><p>What the fuck was he talking about in the background subtraction part</p><a href=#wavelets><h1 id=wavelets><span class=hanchor arialabel=Anchor># </span>Wavelets</h1></a><p>Wavelets are used for:</p><ul><li>Scale-Space analysis</li><li>Simultaneous decimation in space and frequency</li></ul><a href=#2d-gabor-filter><h2 id=2d-gabor-filter><span class=hanchor arialabel=Anchor># </span>2D Gabor Filter</h2></a><p>$$g w 2 D(x, y)=\frac{1}{\sqrt{\pi \sigma^2}} e^{-\left(\frac{\left(x-x_0\right)^2+\left(y-y_0\right)^2}{2 \sigma^2}\right)} e^{-i 2 \pi \pi_0\left(\left(x-x_0\right) \cos \theta+\left(y-y_0\right) \sin \theta\right)}$$
+$$\begin{array}{ll}
+-x_0, y_0 \text { - central position } & -\theta \text { - orientatio } \mathrm{n} \text { of the wavelet } \\ -f_0 \text { - central frequency } & -\sigma \text { - width of the wavelet }
+\end{array}$$</p><a href=#applications-of-gabor-wavelets><h4 id=applications-of-gabor-wavelets><span class=hanchor arialabel=Anchor># </span>Applications of Gabor Wavelets</h4></a><ol><li>Texture Modelling and Analysis<ol><li>Iris texture measurements for security systems</li><li>Face feature extraction for automatic face recognition systems</li></ol></li><li>Image coding</li><li>Image restoration</li></ol><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230224184042.png width=400 alt=|400></p><a href=#intensity-and-spatial-processing-techniques><h1 id=intensity-and-spatial-processing-techniques><span class=hanchor arialabel=Anchor># </span>Intensity and Spatial Processing Techniques</h1></a><a href=#image-histogram><h2 id=image-histogram><span class=hanchor arialabel=Anchor># </span>Image Histogram</h2></a><p>A histogram shows the number of pixels for each gray scale in an image</p><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230224184222.png width=400 alt=|400></p><a href=#image-scaling><h2 id=image-scaling><span class=hanchor arialabel=Anchor># </span>Image Scaling</h2></a><p>Sometimes the gray scales in an image are outside of the standard range<br>[0 – 255]
+In such cases, image scaling (or normalisation) is required to<br>map the gray scales to the standard range
+Methods for image scaling:</p><ol><li>Linear scaling</li><li>Linear scaling with clipping</li><li>Absolute value scaling</li></ol><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230224184658.png width=400 alt=|400></p><a href=#histogram-stretching><h2 id=histogram-stretching><span class=hanchor arialabel=Anchor># </span>Histogram Stretching</h2></a><p>Sometimes the histogram of the original image is too narrow leading to poor<br>visibility
+In order to enhance the image, a histogram stretching technique is used<br>to simply stretch the domain of the histogram using linear scaling methods
+<img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230224185422.png width=300 alt=|300></p><a href=#edge-detection><h1 id=edge-detection><span class=hanchor arialabel=Anchor># </span>Edge Detection</h1></a><p><strong>Edge</strong> - Sharp change in intensity</p><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230224215448.png width=400 alt=|400></p><p>Best way to find an edge is to take derivatives</p><ol><li>Detect local maxima of first derivative</li><li>Detect the zero-crossing of the second derivative</li></ol><p>$$
+\frac{\partial I}{\partial x} \approx I(x+1, y)-I(x, y) \rightarrow
+\begin{array}{|l|l|}
+\hline-1 & 1 \\ \hline
+\end{array}$$</p><p>$$\frac{\partial I}{\partial y} \approx I(x, y+1)-I(x, y) \rightarrow
+\begin{array}{|c|}
+\hline-1 \\ \hline 1 \\ \hline
+\end{array}$$</p><p>By convolving these masks with the original image the partial derivatives can be calculated</p><a href=#prewitt-masks><h2 id=prewitt-masks><span class=hanchor arialabel=Anchor># </span>Prewitt Masks</h2></a><p>$$
+\begin{array}{|c|c|c|}
+\hline-1 & -1 & -1 \\ \hline 0 & 0 & 0 \\ \hline 1 & 1 & 1 \\ \hline
+\end{array}
+\hspace{1em}
+\begin{array}{|c|c|c|}
+\hline-1 & 0 & 1 \\ \hline-1 & 0 & 1 \\ \hline-1 & 0 & 1 \\ \hline
+\end{array}$$</p><a href=#sobel-masks><h2 id=sobel-masks><span class=hanchor arialabel=Anchor># </span>Sobel Masks</h2></a><p>Smooths the image before edge detection</p><p>$$\begin{array}{|c|c|c|}
+\hline-1 & -2 & -1 \\ \hline 0 & 0 & 0 \\ \hline 1 & 2 & 1 \\ \hline
+\end{array}
+\hspace{1em}
+\begin{array}{|c|c|c|}
+\hline-1 & 0 & 1 \\ \hline-2 & 0 & 2 \\ \hline-1 & 0 & 1 \\ \hline
+\end{array}$$</p><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230224221833.png width=400 alt=|400></p><a href=#laplacian-of-gaussian-log><h2 id=laplacian-of-gaussian-log><span class=hanchor arialabel=Anchor># </span>Laplacian of Gaussian (LoG)</h2></a><p>In order to find edges of an image, LoG filter is convolved with the image and the zero-crossings of the filtered image is considered as edges
+The Gaussian filter smoothes the edges before edge detection
+A threshold can be used to determine how big the difference is between neighbouring pixels of a zero-crossing</p><a href=#feature-extraction-or-whatever><h1 id=feature-extraction-or-whatever><span class=hanchor arialabel=Anchor># </span>Feature Extraction or whatever</h1></a><a href=#object-description><h1 id=object-description><span class=hanchor arialabel=Anchor># </span>Object Description</h1></a><a href=#desirable-properties><h2 id=desirable-properties><span class=hanchor arialabel=Anchor># </span>Desirable Properties</h2></a><ul><li>Complete - Different objects must have different descriptions</li><li>Congruent - Similar objects must have similar descriptors</li><li>Compact - Efficient. I.e., quantity of information</li><li>Invariant - Recognise independent of changes<ul><li>Illumination</li><li>Geometry: Scale, Translation, Rotation</li></ul></li></ul><a href=#invariance><h3 id=invariance><span class=hanchor arialabel=Anchor># </span>Invariance</h3></a><p>Recognise independent of orientation
+<img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001205.png width=200 alt=|200></p><p>Can lead to ambiguities
+<img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001229.png width=200 alt=|200></p><a href=#region-description><h2 id=region-description><span class=hanchor arialabel=Anchor># </span>Region Description</h2></a><a href=#area><h3 id=area><span class=hanchor arialabel=Anchor># </span>Area</h3></a><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001342.png width=400 alt=|400>
+<img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001355.png width=400 alt=|400></p><a href=#perimeter><h3 id=perimeter><span class=hanchor arialabel=Anchor># </span>Perimeter</h3></a><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001412.png width=400 alt=|400>
+<img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001422.png width=400 alt=|400></p><a href=#compactness><h3 id=compactness><span class=hanchor arialabel=Anchor># </span>Compactness</h3></a><p>Measures the efficiency with which a boundary encloses an area
+<img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001455.png width=500 alt=|500>
+<img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001505.png width=400 alt=|400></p><a href=#examples><h4 id=examples><span class=hanchor arialabel=Anchor># </span>Examples</h4></a><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001536.png width=500 alt=|500></p><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001554.png width=500 alt=|500></p><a href=#dispersion><h3 id=dispersion><span class=hanchor arialabel=Anchor># </span>Dispersion</h3></a><p>Measures the occupancy as the ratio between the area of the circle enclosing the region and the area of the region</p><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001629.png width=500 alt=|500></p><p>Can alternatively be measured as the ratio between the circle enclosing and contained inside the region</p><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001702.png width=500 alt=|500></p><a href=#moments><h3 id=moments><span class=hanchor arialabel=Anchor># </span>Moments</h3></a><p>Consider the region as a distribution
+$$
+m_{p, q}=\sum_x \sum_y x^p y^q I(x, y) \Delta A
+$$
+Zero-order: Total Mass
+$$
+m_{0,0}=\sum_x \sum_y I(x, y) \Delta A
+$$
+First-order/Centre of mass
+$$
+m_{1,0}=\sum_x \sum_y x I(x, y) \Delta A \quad m_{0,1}=\sum_x \sum_y y I(x, y) \Delta A
+$$
+Location of centre of mass
+$$
+\begin{aligned}
+&\bar{x}=\frac{m_{1,0}}{m_{0,0}}\\ &\bar{y}=\frac{m_{0,1}}{m_{0,0}}
+\end{aligned}
+$$
+<img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001931.png width=200 alt=|200></p><a href=#invariance-1><h4 id=invariance-1><span class=hanchor arialabel=Anchor># </span>Invariance</h4></a><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230319001957.png width=500 alt=|500></p><a href=#centralised-moments-translation-invariant><h4 id=centralised-moments-translation-invariant><span class=hanchor arialabel=Anchor># </span>Centralised Moments (Translation Invariant)</h4></a><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230324205737.png width=400 alt=|400>
+<img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230324205752.png width=400 alt=|400></p><a href=#first-order-centralised-moments><h4 id=first-order-centralised-moments><span class=hanchor arialabel=Anchor># </span>First-Order Centralised Moments</h4></a><p>$$
+\begin{gathered}
+\mu_{1,0}=\sum_x \sum_y(x-\bar{x}) I(x, y) \Delta A \\ \mu_{1,0}=\sum_x \sum_y x I(x, y) \Delta A-\sum_x \sum_y^{-} \bar{x} I(x, y) \Delta A \\ \mu_{1,0}=\sum_x \sum_y x I(x, y) \Delta A-\bar{x} \sum_x \sum_y I(x, y) \Delta A \\ \mu_{1,0}=m_{0,1}-\frac{m_{0,1}}{m_{0,0}} m_{0,0} \\ \mu_{1,0}=0
+\end{gathered}
+$$</p><a href=#second-order-centralised-moments><h4 id=second-order-centralised-moments><span class=hanchor arialabel=Anchor># </span>Second-Order Centralised Moments</h4></a><p>$$
+\begin{gathered}
+\mu_{2,0}=\sum_x \sum_y(x-\bar{x})^2 I(x, y) \Delta A \\ \mu_{2,0}=\sum_x \sum_y\left(x^2-2 x \bar{x}+\bar{x}^2\right) I(x, y) \Delta A \quad \bar{x}=\frac{m_{1,0}}{m_{0,0}} \\ \mu_{2,0}=m_{2,0}-2 m_{1,0} \frac{m_{1,0}}{m_{0,0}}+\left(\frac{m_{1,0}}{m_{0,0}}\right)^2 m_{0,0} \\ \mu_{2,0}=m_{2,0}-\frac{m^2{ }<em>{1,0}}{m</em>{0,0}}
+\end{gathered}
+$$</p><a href=#example-of-centralised-moments><h4 id=example-of-centralised-moments><span class=hanchor arialabel=Anchor># </span>Example of Centralised Moments</h4></a><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230324210427.png width=500 alt=|500></p><a href=#normalised-central-moments-scale-invariant><h4 id=normalised-central-moments-scale-invariant><span class=hanchor arialabel=Anchor># </span>Normalised Central Moments (Scale Invariant)</h4></a><p>The normalised central moment of order (p+q) is obtained by dividing the central moment of the same order by a normalisation factor
+$$
+\begin{gathered}
+x^{\prime}=k x \quad y^{\prime}=k y \\ \eta_{p q}=\frac{\mu_{p q}}{\mu_{00}^\gamma} \\ \gamma=\frac{p+q}{2}+1 \quad \forall p+q \geq 2
+\end{gathered}
+$$</p><a href=#second-order-normalised-centralised-moments><h4 id=second-order-normalised-centralised-moments><span class=hanchor arialabel=Anchor># </span>Second-Order Normalised Centralised Moments</h4></a><p>$$
+\begin{aligned}
+& \eta_{2,0}=\frac{\mu_{20}}{\mu_{00}^\gamma} \quad \gamma=\frac{2+0}{2}+1=2 \\ & \mu_{2,0}=m_{2,0}-\frac{m_{1,0}^2}{m_{0,0}} \quad \quad \mu_{0,0}=m_{0,0} \\ & \eta_{2,0}=\frac{m_{2,0}}{m_{0,0}^2}-\frac{m^2{ }<em>{1,0}}{m^3{ }</em>{0,0}} \\ &
+\end{aligned}
+$$</p><a href=#invariant-moments-rotation-invariant><h4 id=invariant-moments-rotation-invariant><span class=hanchor arialabel=Anchor># </span>Invariant Moments (Rotation Invariant)</h4></a><p>$$
+\begin{aligned}
+M 1= & \eta_{20}+\eta_{02} \\ M 2= & \left(\eta_{20}-\eta_{02}\right)^2+4 \eta_{11}^2 \\ M 3= & \left(\eta_{30}-3 \eta_{12}\right)^2+\left(3 \eta_{21}-\eta_{03}\right)^2 \\ M 4= & \left(\eta_{30}+\eta_{12}\right)^2+\left(\eta_{21}+\eta_{03}\right)^2 \\ M 5= & \left(\eta_{30}-3 \eta_{12}\right)\left(\eta_{30}+\eta_{12}\right)+\left(\left(\eta_{30}+\eta_{12}\right)^2-3\left(\eta_{21}-\eta_{03}\right)^2\right)+ \\ & \left(3 \eta_{21}-\eta_{03}\right)\left(\eta_{21}+\eta_{03}\right)\left(3\left(\eta_{30}+\eta_{12}\right)^2-\left(\eta_{21}+\eta_{03}\right)^2\right) \\ M 6= & \left(\eta_{20}-\eta_{02}\right)\left(\left(\eta_{30}+\eta_{12}\right)^2-\left(\eta_{21}+\eta_{03}\right)^2\right)+4 \eta_{11}\left(\eta_{30}+\eta_{12}\right)\left(\eta_{21}+\eta_{03}\right) \\ M 7= & \left(3 \eta_{21}-\eta_{03}\right)\left(\eta_{30}+\eta_{12}\right)\left(\left(\eta_{30}+\eta_{12}\right)^2-3\left(\eta_{21}+\eta_{03}\right)^2\right)+ \\ & \left(3 \eta_{12}-\eta_{30}\right)\left(\eta_{21}+\eta_{03}\right)\left(3\left(\eta_{12}+\eta_{30}\right)^2-\left(\eta_{21}+\eta_{03}\right)^2\right)
+\end{aligned}
+$$</p><a href=#invariant-moments><h4 id=invariant-moments><span class=hanchor arialabel=Anchor># </span>Invariant Moments</h4></a><p>$$
+\begin{gathered}
+M=\eta_{20}+\eta_{02} \\ \eta_{2,0}=\frac{\mu_{20}}{\mu_{00}^2} \quad \eta_{0,2}=\frac{\mu_{02}}{\mu_{00}^2} \\ M=\frac{\mu_{20}+\mu_{20}}{\mu_{00}^2}
+\end{gathered}
+$$</p><a href=#example-invariant-moments><h4 id=example-invariant-moments><span class=hanchor arialabel=Anchor># </span>Example Invariant Moments</h4></a><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230324212206.png width=500 alt=|500></p><a href=#advantages-of-moments><h4 id=advantages-of-moments><span class=hanchor arialabel=Anchor># </span>Advantages of Moments</h4></a><ul><li>Work on grey scale as well as binary objects</li><li>Can utilise pixel brightness</li><li>Access to detail</li></ul><a href=#disadvantages-of-moments><h4 id=disadvantages-of-moments><span class=hanchor arialabel=Anchor># </span>Disadvantages of Moments</h4></a><ul><li>Assumes only one object present</li><li>Computationally expensive</li><li>High order moments</li><li>Large numbers</li><li>Sensitive to noise</li></ul><a href=#shape-description><h2 id=shape-description><span class=hanchor arialabel=Anchor># </span>Shape Description</h2></a><p><strong>Drawbacks</strong></p><ul><li>Difficult to extract curves from images</li><li>Ambiguous (many objects can have similar shapes)</li><li>Analytic complexity in many areas</li></ul><p>Boundary/ Shape description</p><ul><li>Discrete<ul><li>Chain Codes</li><li>Run-Length Codes</li><li>Extreme points</li></ul></li><li>Curves<ul><li>Polynomials</li><li>Splines</li><li>Wavelets</li><li>Fourier</li></ul></li><li>Properties (Discrete/Curve)<ul><li>Length</li><li>Curvature</li><li>Bending energy</li><li>Convexity</li></ul></li></ul><a href=#fourier-descriptors><h3 id=fourier-descriptors><span class=hanchor arialabel=Anchor># </span>Fourier Descriptors</h3></a><ol><li>Have image and template image</li><li>Take boundaries of both</li><li>Find Fourier Expansion of boundaries</li><li>Convert to Fourier Descriptors of boundaries</li></ol><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230325164834.png width=600 alt=|600></p><a href=#common-fourier-descriptors><h4 id=common-fourier-descriptors><span class=hanchor arialabel=Anchor># </span>Common Fourier Descriptors</h4></a><p><strong>Polar</strong> Fourier Descriptors (angular)</p><ul><li>Cumulative Angular Function</li><li>Fourier Series (trigonometric form)</li></ul><p><strong>Elliptic</strong> Fourier Descriptors</p><ul><li>Complex Curve</li><li>Fourier Series (complex/trigonometric form)</li></ul><a href=#elliptic-fourier-descriptors><h4 id=elliptic-fourier-descriptors><span class=hanchor arialabel=Anchor># </span>Elliptic Fourier Descriptors</h4></a><p>Basic approach</p><ol><li>To obtain a complex function from the 2D curve</li><li>To perform a Fourier expansion</li><li>To define descriptors from Fourier coefficients</li></ol><a href=#complex-curve><h5 id=complex-curve><span class=hanchor arialabel=Anchor># </span>Complex curve</h5></a><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230325170327.png width=400 alt=|400></p><a href=#alternative-definitions><h5 id=alternative-definitions><span class=hanchor arialabel=Anchor># </span>Alternative Definitions</h5></a><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230325170433.png width=500 alt=|500></p><a href=#trigonometric-expansion><h5 id=trigonometric-expansion><span class=hanchor arialabel=Anchor># </span>Trigonometric Expansion</h5></a><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230325170930.png width=600 alt=|600></p><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230325171013.png width=600 alt=|600></p><a href=#trigonometric-form><h5 id=trigonometric-form><span class=hanchor arialabel=Anchor># </span>Trigonometric Form</h5></a><p>$$
+\begin{array}{ll}
+a_{x k}=\frac{2}{T} \int_0^T x(t) \cos (k \omega t) d t & a_{y k}=\frac{2}{T} \int_0^T y(t) \cos (k \omega t) d t \\ b_{x k}=\frac{2}{T} \int_0^T x(t) \sin (k \omega t) d t & b_{y k}=\frac{2}{T} \int_0^T y(t) \sin (k \omega t) d t
+\end{array}
+$$</p><a href=#discrete-computation><h5 id=discrete-computation><span class=hanchor arialabel=Anchor># </span>Discrete Computation</h5></a><p>$$
+\begin{array}{lll}
+a_{x k}=\frac{2}{m} \sum_{i=1}^m x_i \cos (k \omega i \tau) & \text { and } & b_{x k}=\frac{2}{m} \sum_{i=1}^m x_i \sin (k \omega i \tau) \\ a_{y k}=\frac{2}{m} \sum_{i=1}^m y_i \cos (k \omega i \tau) & \text { and } & b_{y k}=\frac{2}{m} \sum_{i=1}^m y_i \sin (k \omega i \tau)
+\end{array}
+$$</p><a href=#basic-approach><h5 id=basic-approach><span class=hanchor arialabel=Anchor># </span>Basic Approach</h5></a><ol><li>To obtain a complex function from the 2D curve
+$$
+c(t)=x(t)+j y(t)
+$$</li><li>To perform a Fourier expansion
+$$
+\left[\begin{array}{l}
+x(t) \\ y(t)
+\end{array}\right]=\frac{1}{2}\left[\begin{array}{l}
+a_{x 0} \\ a_{y 0}
+\end{array}\right]+\sum_{k=1}^{\infty}\left[\begin{array}{ll}
+a_{x k} & b_{x k} \\ a_{y k} & b_{y k}
+\end{array}\right]\left[\begin{array}{c}
+\cos (k \omega t) \\ \sin (k \omega t)
+\end{array}\right]
+$$</li><li>To define descriptors from Fourier Coefficients</li></ol><a href=#invariant-descriptors><h5 id=invariant-descriptors><span class=hanchor arialabel=Anchor># </span>Invariant Descriptors</h5></a><p>$$
+\left[\begin{array}{l}
+x(t) \\ y(t)
+\end{array}\right]=\frac{1}{2}\left[\begin{array}{l}
+a_{x 0} \\ a_{y 0}
+\end{array}\right]+\sum_{k=1}^{\infty}\left[\begin{array}{ll}
+a_{x k} & b_{x k} \\ a_{y k} & b_{y k}
+\end{array}\right]\left[\begin{array}{c}
+\cos (k \omega t) \\ \sin (k \omega t)
+\end{array}\right]
+$$</p><a href=#translation><h6 id=translation><span class=hanchor arialabel=Anchor># </span>Translation</h6></a><p>$$
+\begin{gathered}
+{\left[\begin{array}{l}
+x^{\prime}(t) \\ y^{\prime}(t)
+\end{array}\right]=\frac{1}{2}\left[\begin{array}{l}
+a_{x 0} \\ a_{y 0}
+\end{array}\right]+\sum_{k=1}^{\infty}\left[\begin{array}{ll}
+a_{x k} & b_{x k} \\ a_{y k} & b_{y k}
+\end{array}\right]\left[\begin{array}{c}
+\cos (k \omega t) \\ \sin (k \omega t)
+\end{array}\right]+\left[\begin{array}{l}
+t_x \\ t_y
+\end{array}\right]} \\ {\left[\begin{array}{l}
+x^{\prime}(t) \\ y^{\prime}(t)
+\end{array}\right]=\frac{1}{2}\left[\begin{array}{l}
+a_{x 0}-t_x \\ a_{y 0}-t_y
+\end{array}\right]+\sum_{k=1}^{\infty}\left[\begin{array}{ll}
+a_{x k} & b_{x k} \\ a_{y k} & b_{y k}
+\end{array}\right]\left[\begin{array}{c}
+\cos (k \omega t) \\ \sin (k \omega t)
+\end{array}\right]}
+\end{gathered}
+$$</p><a href=#translation-invariant><h6 id=translation-invariant><span class=hanchor arialabel=Anchor># </span>Translation Invariant</h6></a><p>$$
+a_{x k}^{\prime}=a_{x k} \quad b_{x k}^{\prime}=b_{x k} \quad a_{y k}^{\prime}=a_{y k} \quad b_{y k}^{\prime}=b_{y k} \quad \text { for } k \neq 0
+$$</p><a href=#scale><h6 id=scale><span class=hanchor arialabel=Anchor># </span>Scale</h6></a><p>$$
+\left[\begin{array}{l}
+x^{\prime}(t) \\ y^{\prime}(t)
+\end{array}\right]=\frac{1}{2}\left[\begin{array}{l}
+a_{x 0} \\ a_{y 0}
+\end{array}\right]+s \sum_{k=1}^{\infty}\left[\begin{array}{ll}
+a_{x k} & b_{x k} \\ a_{y k} & b_{y k}
+\end{array}\right]\left[\begin{array}{c}
+\cos (k \omega t) \\ \sin (k \omega t)
+\end{array}\right]
+$$</p><a href=#scale-invariant><h6 id=scale-invariant><span class=hanchor arialabel=Anchor># </span>Scale Invariant</h6></a><p>$$
+\frac{a_{x k}^{\prime}}{a_{x 1}^{\prime}}=\frac{a_{x k}}{a_{x 1}} \quad \frac{b_{x k}^{\prime}}{b_{x 1}^{\prime}}=\frac{b_{x k}}{b_{x 1}} \quad \frac{a_{y k}^{\prime}}{a_{y 1}^{\prime}}=\frac{a_{y k}}{a_{y 1}} \quad \frac{b_{y k}^{\prime}}{b_{y 1}^{\prime}}=\frac{b_{y k}}{b_{y 1}} \quad \text { for } k \neq 0
+$$</p><a href=#rotation><h6 id=rotation><span class=hanchor arialabel=Anchor># </span>Rotation</h6></a><p>$$
+\begin{aligned}
+& {\left[\begin{array}{l}
+x^{\prime}(t) \\ y^{\prime}(t)
+\end{array}\right]=\frac{1}{2}\left[\begin{array}{l}
+a_{x 0} \\ a_{y 0}
+\end{array}\right]+\left[\begin{array}{cc}
+\cos (\rho) & \sin (\rho) \\ -\sin (\rho) & \cos (\rho)
+\end{array}\right]<em>{k=1}^{\infty}\left[\begin{array}{ll}
+a</em>{x k} & b_{x k} \\ a_{y k} & b_{y k}
+\end{array}\right]\left[\begin{array}{c}
+\cos (k \omega t) \\ \sin (k \omega t)
+\end{array}\right]} \\ \\ & a_{x k}^{\prime}=a_{x k} \cos (\rho)+a_{y k} \sin (\rho) \quad b_{x k}^{\prime}=b_{x k} \cos (\rho)+b_{y k} \sin (\rho) \\ & a_{y k}^{\prime}=-a_{x k} \sin (\rho)+a_{y k} \cos (\rho) \quad b_{y k}^{\prime}=-b_{x k} \sin (\rho)+b_{y k} \cos (\rho) \\ & a_{x 0}^{\prime}=a_{x 0} \quad a_{y 0}^{\prime}=a_{y 0}
+\end{aligned}
+$$</p><a href=#example><h5 id=example><span class=hanchor arialabel=Anchor># </span>Example</h5></a><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230325172343.png width=600 alt=|600></p><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230325172406.png width=300 alt=|300></p><a href=#multiscale><h5 id=multiscale><span class=hanchor arialabel=Anchor># </span>Multiscale</h5></a><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230325172642.png width=500 alt=|500></p><p><img src=https://ik1g19.github.io/UoS-Notes//notes/Biometrics/Images/Pasted%20image%2020230325172707.png width=500 alt=|500></p></article><hr><div class=page-end id=footer><div class=backlinks-container><h3>Backlinks</h3><ul class=backlinks><li>No backlinks found</li></ul></div><div><script async src=https://cdn.jsdelivr.net/npm/d3@6.7.0/dist/d3.min.js integrity="sha256-+7jaYCp29O1JusNWHaYtgUn6EhuP0VaFuswhNV06MyI=" crossorigin=anonymous></script><h3>Interactive Graph</h3><div id=graph-container></div><style>:root{--g-node:var(--secondary);--g-node-active:var(--primary);--g-node-inactive:var(--visited);--g-link:var(--outlinegray);--g-link-active:#5a7282}</style><script src=https://ik1g19.github.io/UoS-Notes/js/graph.6579af7b10c818dbd2ca038702db0224.js></script></div></div><div id=contact_buttons><footer><p>Made by Isaac Klugman using <a href=https://github.com/jackyzha0/quartz>Quartz</a>, © 2023</p><ul><li><a href=https://ik1g19.github.io/UoS-Notes/>Home</a></li><li><a href=https://twitter.com/_jzhao>Twitter</a></li><li><a href=https://github.com/jackyzha0>GitHub</a></li></ul></footer></div></div></body></html>
