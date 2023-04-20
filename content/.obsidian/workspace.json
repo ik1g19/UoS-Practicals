@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/3D Pose Estimation Using Omni-Directional Cameras.md",
+                "file": "notes/Computer Vision.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "notes/3D Pose Estimation Using Omni-Directional Cameras.md",
+                "file": "notes/Computer Vision.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "notes/3D Pose Estimation Using Omni-Directional Cameras.md",
+                "file": "notes/Computer Vision.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "notes/3D Pose Estimation Using Omni-Directional Cameras.md"
+                "file": "notes/Computer Vision.md"
               }
             }
           }
@@ -149,8 +149,8 @@
   },
   "active": "c76f1af3cec5bdaf",
   "lastOpenFiles": [
-    "notes/Software Engineering Group Project.md",
     "notes/3D Pose Estimation Using Omni-Directional Cameras.md",
+    "notes/Software Engineering Group Project.md",
     "notes/Images/Pasted image 20230420235940.png",
     "notes/Distributed Systems and Networks.md",
     "notes/Computer Vision.md",
