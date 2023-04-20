@@ -1,5 +1,5 @@
 ---
-title: Isaac's UoS Notes
+title: UoS Practicals
 enableToc: false
 ---
 
