@@ -1,6 +1,0 @@
----
-title: "Intelligent Agents"
----
-
-# Coursework
-

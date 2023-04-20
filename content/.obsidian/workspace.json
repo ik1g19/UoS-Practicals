@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "494d0c16a277d8f6",
+            "id": "c76f1af3cec5bdaf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_index.md",
+                "file": "notes/3D Pose Estimation Using Omni-Directional Cameras.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "_index.md",
+                "file": "notes/3D Pose Estimation Using Omni-Directional Cameras.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "_index.md",
+                "file": "notes/3D Pose Estimation Using Omni-Directional Cameras.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "_index.md"
+                "file": "notes/3D Pose Estimation Using Omni-Directional Cameras.md"
               }
             }
           }
@@ -147,23 +147,29 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "494d0c16a277d8f6",
+  "active": "c76f1af3cec5bdaf",
   "lastOpenFiles": [
-    "notes/Year 1/Computer Systems.md",
+    "notes/Software Engineering Group Project.md",
+    "notes/3D Pose Estimation Using Omni-Directional Cameras.md",
+    "notes/Images/Pasted image 20230420235940.png",
+    "notes/Distributed Systems and Networks.md",
+    "notes/Computer Vision.md",
     "_index.md",
+    "notes/Images",
+    "notes/Images/hybrid_image.jpg",
+    "notes/Year 2/Software Engineering Group Project.md",
     "notes/Year 4/Intelligent Agents.md",
     "notes/Year 3/Group Design Project.md",
-    "notes/Year 4",
     "notes/Year 3/Computer Vision.md",
-    "notes/Year 2/Distributed Systems and Networks.md",
-    "notes/Year 1/Programming I.md",
     "notes/Year 2/Programming Language Concepts.md",
     "notes/Year 2/Programming III.md",
-    "notes/Year 2/Software Engineering Group Project.md",
     "notes/Year 1/Programming II.md",
+    "notes/Year 1/Programming I.md",
+    "notes/Year 1/Data Management.md",
+    "notes/Year 1/Computer Systems.md",
+    "notes/Year 4",
     "notes/Year 3",
     "notes/Software Engineering Group Project",
-    "notes/Year 1/Data Management.md",
     "notes/Year 2",
     "notes/templates/post.md",
     "notes/templates",
@@ -179,12 +185,7 @@
     "notes/Programming 2",
     "notes/Software Security/Courseworks/Coursework 1.md",
     "notes/SEG/SEG.md",
-    "notes/Interaction Design",
     "notes/Software Security/Software Security ToC.md",
-    "notes/Principles of Cyber Security/Principles of Cyber Security.md",
-    "notes/Engineering Management and Law/Engineering Management and Law.md",
-    "notes/Programming 3/Programming 3.md",
-    "notes/Web and Cloud Based Security/Web and Cloud Based Security.md",
     "notes/Software Security/Images/Pasted image 20230413011753.png",
     "notes/Software Security/Images/Pasted image 20230413012204.png",
     "notes/Software Security/Images/Pasted image 20230412220117.png",
@@ -192,8 +193,6 @@
     "notes/Software Security/Images/Pasted image 20230413010337.png",
     "notes/Software Security/Images/Pasted image 20230413010242.png",
     "notes/Software Security/Images/Pasted image 20230413004805.png",
-    "notes/Software Security/Images/Pasted image 20230413004653.png",
-    "notes/Software Security/Images/Pasted image 20230413004147.png",
-    "notes/Software Security/Images/Pasted image 20230413003509.png"
+    "notes/Software Security/Images/Pasted image 20230413004653.png"
   ]
 }

@@ -3,32 +3,19 @@ title: UoS Practicals
 enableToc: false
 ---
 
-# Year 1
+# UoS Gitlabs
 
-#### [[notes/Year 1/Computer Systems|Computer Systems]]
+You can view my personal UoS Gitlabs page here:
+[Gitlabs🔗](https://git.soton.ac.uk/users/ik1g19/projects)
 
-#### [[notes/Year 1/Data Management|Data Management]]
+This is a collection of courseworks and projects I worked on while at UoS
 
-#### [[notes/Year 1/Programming I|Programming I]]
+# Notable Courswork
 
-#### [[notes/Year 1/Programming II|Programming II]]
+- [[notes/Distributed Systems and Networks|Distributed Systems and Networks]]
 
-# Year 2
+- [[notes/Computer Vision|Computer Vision]]
 
-#### [[notes/Year 2/Distributed Systems and Networks|Distributed Systems and Networks]]
+- [[notes/Software Engineering Group Project|Software Engineering Group Project]]
 
-#### [[notes/Year 2/Programming III|Programming III]]
-
-#### [[notes/Year 2/Programming Language Concepts|Programming Language Concepts]]
-
-#### [[notes/Year 2/Software Engineering Group Project|Software Engineering Group Project]]
-
-# Year 3
-
-#### [[notes/Year 3/Computer Vision|Computer Vision]]
-
-#### [[notes/Year 3/Group Design Project|Group Design Project]]
-
-# Year 4
-
-#### [[notes/Year 4/Intelligent Agents|Intelligent Agents]]
+- [[notes/3D Pose Estimation Using Omni-Directional Cameras|3D Pose Estimation Using Omni-Directional Cameras]]
